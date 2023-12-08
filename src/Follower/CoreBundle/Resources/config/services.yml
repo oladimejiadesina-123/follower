@@ -1,0 +1,42 @@
+services:
+    follower_event_listener:
+        class: Follower\CoreBundle\Event\FollowerEventListener
+        arguments:
+            - "@database_connection"
+        tags:
+            - { name: kernel.event_subscriber }
+
+    follower_event_dispatcher:
+        class: Follower\CoreBundle\Event\FollowerEventDispatcher
+        arguments:
+            - "@event_dispatcher"
+
+    core_follower_wrapper:
+        class: Follower\CoreBundle\Wrapper\FollowerWrapper
+        arguments:
+            - "@service_container"
+
+    core_unfollower_wrapper:
+        class: Follower\CoreBundle\Wrapper\UnfollowerWrapper
+        arguments:
+            - "@service_container"
+
+    core_liker_wrapper:
+        class: Follower\CoreBundle\Wrapper\LikerWrapper
+        arguments:
+            - "@service_container"
+
+    core_unliker_wrapper:
+        class: Follower\CoreBundle\Wrapper\UnlikerWrapper
+        arguments:
+            - "@service_container"
+
+    core_reshare_wrapper:
+        class: Follower\CoreBundle\Wrapper\ReShareWrapper
+        arguments:
+            - "@service_container"
+
+    core_message_wrapper:
+        class: Follower\CoreBundle\Wrapper\MessageWrapper
+        arguments:
+            - "@service_container"
